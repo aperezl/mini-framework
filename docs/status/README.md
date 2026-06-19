@@ -3,14 +3,14 @@
 ## Progress
 
 - Elemento 00: Get Started `██████████ 100%`
-- Milestone 01: Core - Tooling `██░░░░░░░░ 25%`
+- Milestone 01: Core - Tooling `█████░░░░░ 50%`
 - Milestone 02: El Loop - Orquestación y Estados `░░░░░░░░░░ 0%`
 - Milestone 03: Persistencia y Local-First `░░░░░░░░░░ 0%`
 - Milestone 04: DX y Extensibilidad `░░░░░░░░░░ 0%`
 
 ## Active Tasks
 
-- [ ] [01.2 — Generador de Schema](../sdd/01-core-tooling/01.2-generador-schema/SPEC.md) `🔄 In Progress`
+*None*
 
 ## Next Up
 
@@ -41,3 +41,4 @@
 - [x] [00.2 — Configuración de TypeScript](../sdd/00-get-started/00.2-setup-typescript/SPEC.md) `✅ Done` (commit: `b41a4c1`)
 - [x] [00.3 — Configuración de Vitest](../sdd/00-get-started/00.3-setup-vitest/SPEC.md) `✅ Done` (commit: `fd177b2`)
 - [x] [01.1 — Definición de Contrato](../sdd/01-core-tooling/01.1-definicion-contrato/SPEC.md) `✅ Done` (commit: `2c774bc`)
+- [x] [01.2 — Generador de Schema](../sdd/01-core-tooling/01.2-generador-schema/SPEC.md) `✅ Done` (commit: `HEAD`)
