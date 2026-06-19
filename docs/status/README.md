@@ -10,7 +10,7 @@
 
 ## Active Tasks
 
-*None*
+- [ ] [01.3 — Registry Pattern](../sdd/01-core-tooling/01.3-registry-pattern/SPEC.md) `🔄 In Progress`
 
 ## Next Up
 
@@ -18,7 +18,6 @@
 *None*
 
 ### Milestone 01: Core - Tooling
-- [ ] [01.3 — Registry Pattern](../sdd/01-core-tooling/01.3-registry-pattern/SPEC.md)
 - [ ] [01.4 — Ejecutor de Tipos](../sdd/01-core-tooling/01.4-ejecutor-tipos/SPEC.md)
 
 ### Milestone 02: El Loop - Orquestación y Estados
