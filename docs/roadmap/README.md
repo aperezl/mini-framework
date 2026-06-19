@@ -9,7 +9,7 @@ High-level status of the lightweight LLM orchestration framework build phases.
 - [ ] **Milestone 01: Core - Tooling**
   - [x] 01.1 — Definición de Contrato
   - [x] 01.2 — Generador de Schema
-  - [ ] 01.3 — Registry Pattern
+  - [x] 01.3 — Registry Pattern
   - [ ] 01.4 — Ejecutor de Tipos
 - [ ] **Milestone 02: El Loop - Orquestación y Estados**
   - [ ] 02.1 — Agente Orquestador
