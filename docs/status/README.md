@@ -41,4 +41,4 @@
 
 - [x] [00.1 — Inicialización de package.json](../sdd/00-get-started/00.1-init-package/SPEC.md) `✅ Done` (commit: `83b87b4`)
 - [x] [00.2 — Configuración de TypeScript](../sdd/00-get-started/00.2-setup-typescript/SPEC.md) `✅ Done` (commit: `b41a4c1`)
-- [x] [00.3 — Configuración de Vitest](../sdd/00-get-started/00.3-setup-vitest/SPEC.md) `✅ Done` (commit: `HEAD`)
+- [x] [00.3 — Configuración de Vitest](../sdd/00-get-started/00.3-setup-vitest/SPEC.md) `✅ Done` (commit: `fd177b2`)
