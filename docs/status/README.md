@@ -10,7 +10,7 @@
 
 ## Active Tasks
 
-*None*
+- [ ] [01.1 — Definición de Contrato](../sdd/01-core-tooling/01.1-definicion-contrato/SPEC.md) `🔄 In Progress`
 
 ## Next Up
 
@@ -18,7 +18,6 @@
 *None*
 
 ### Milestone 01: Core - Tooling
-- [ ] [01.1 — Definición de Contrato](../sdd/01-core-tooling/01.1-definicion-contrato/SPEC.md)
 - [ ] [01.2 — Generador de Schema](../sdd/01-core-tooling/01.2-generador-schema/SPEC.md)
 - [ ] [01.3 — Registry Pattern](../sdd/01-core-tooling/01.3-registry-pattern/SPEC.md)
 - [ ] [01.4 — Ejecutor de Tipos](../sdd/01-core-tooling/01.4-ejecutor-tipos/SPEC.md)
