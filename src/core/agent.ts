@@ -10,13 +10,30 @@ export interface ToolCall {
   };
 }
 
-export interface ChatMessage {
-  role: 'user' | 'assistant' | 'system' | 'tool';
+export interface UserMessage {
+  role: 'user';
+  content: string;
+}
+
+export interface AssistantMessage {
+  role: 'assistant';
   content?: string | null;
   tool_calls?: ToolCall[];
-  tool_call_id?: string;
-  name?: string;
 }
+
+export interface SystemMessage {
+  role: 'system';
+  content: string;
+}
+
+export interface ToolMessage {
+  role: 'tool';
+  tool_call_id: string;
+  name: string;
+  content: string;
+}
+
+export type ChatMessage = UserMessage | AssistantMessage | SystemMessage | ToolMessage;
 
 export interface LLMResponse {
   message: ChatMessage;
@@ -55,9 +72,10 @@ export class Agent {
       // Add response message to history
       history.push(response.message);
 
-      // If stopped or no tool calls, return history
+      // If stopped or not assistant/no tool calls, return history
       if (
         response.finish_reason === 'stop' ||
+        response.message.role !== 'assistant' ||
         !response.message.tool_calls ||
         response.message.tool_calls.length === 0
       ) {

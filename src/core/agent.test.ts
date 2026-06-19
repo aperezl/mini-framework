@@ -183,4 +183,83 @@ describe('Agent Orchestrator', () => {
     );
     expect(provider.chat).toHaveBeenCalledTimes(3);
   });
+
+  it('handles multi-turn conversation with consecutive tool calls and verifies correct history structure', async () => {
+    const registry = new ToolRegistry();
+    registry.register(addTool);
+
+    const chatMock = vi.fn();
+    // Turn 1: User asks, LLM calls add tool for 5 + 10
+    chatMock.mockResolvedValueOnce({
+      message: {
+        role: 'assistant',
+        content: null,
+        tool_calls: [
+          {
+            id: 'call_1',
+            type: 'function',
+            function: {
+              name: 'add',
+              arguments: JSON.stringify({ a: 5, b: 10 }),
+            },
+          },
+        ],
+      },
+      finish_reason: 'tool_calls',
+    });
+    // Turn 2: LLM gets result 15, then requests to add 15 + 20
+    chatMock.mockResolvedValueOnce({
+      message: {
+        role: 'assistant',
+        content: 'Adding 20 more.',
+        tool_calls: [
+          {
+            id: 'call_2',
+            type: 'function',
+            function: {
+              name: 'add',
+              arguments: JSON.stringify({ a: 15, b: 20 }),
+            },
+          },
+        ],
+      },
+      finish_reason: 'tool_calls',
+    });
+    // Turn 3: LLM gets result 35, and stops
+    chatMock.mockResolvedValueOnce({
+      message: {
+        role: 'assistant',
+        content: 'Final result is 35.',
+      },
+      finish_reason: 'stop',
+    });
+
+    const provider: LLMProvider = { chat: chatMock };
+    const agent = new Agent(registry, provider);
+    const result = await agent.run([{ role: 'user', content: 'Add 5 and 10, then add 20 to the result' }]);
+
+    expect(chatMock).toHaveBeenCalledTimes(3);
+    expect(result).toHaveLength(6); // User, Assistant (call 1), Tool (result 15), Assistant (call 2), Tool (result 35), Assistant (stop)
+    
+    expect(result[0].role).toBe('user');
+    expect(result[1].role).toBe('assistant');
+    expect(result[2].role).toBe('tool');
+    expect(result[2]).toEqual({
+      role: 'tool',
+      tool_call_id: 'call_1',
+      name: 'add',
+      content: '15',
+    });
+    expect(result[3].role).toBe('assistant');
+    expect(result[4].role).toBe('tool');
+    expect(result[4]).toEqual({
+      role: 'tool',
+      tool_call_id: 'call_2',
+      name: 'add',
+      content: '35',
+    });
+    expect(result[5].role).toBe('assistant');
+    expect(result[5].content).toBe('Final result is 35.');
+  });
 });
+
