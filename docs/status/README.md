@@ -10,12 +10,11 @@
 
 ## Active Tasks
 
-*None*
+- [ ] [00.2 — Configuración de TypeScript](../sdd/00-get-started/00.2-setup-typescript/SPEC.md) `🔄 In Progress`
 
 ## Next Up
 
 ### Milestone 00: Get Started
-- [ ] [00.2 — Configuración de TypeScript](../sdd/00-get-started/00.2-setup-typescript/SPEC.md)
 - [ ] [00.3 — Configuración de Vitest](../sdd/00-get-started/00.3-setup-vitest/SPEC.md)
 
 ### Milestone 01: Core - Tooling
