@@ -4,7 +4,7 @@
 
 - Elemento 00: Get Started `██████████ 100%`
 - Milestone 01: Core - Tooling `██████████ 100%`
-- Milestone 02: El Loop - Orquestación y Estados `███░░░░░░░ 33%`
+- Milestone 02: El Loop - Orquestación y Estados `██████░░░░ 66%`
 - Milestone 03: Persistencia y Local-First `░░░░░░░░░░ 0%`
 - Milestone 04: DX y Extensibilidad `░░░░░░░░░░ 0%`
 
@@ -21,7 +21,6 @@
 *None*
 
 ### Milestone 02: El Loop - Orquestación y Estados
-- [ ] [02.2 — Manejo de Estados](../sdd/02-loop-orquestacion/02.2-manejo-estados/SPEC.md)
 - [ ] [02.3 — Contexto & State](../sdd/02-loop-orquestacion/02.3-contexto-state/SPEC.md)
 
 ### Milestone 03: Persistencia y Local-First
@@ -43,3 +42,4 @@
 - [x] [01.3 — Registry Pattern](../sdd/01-core-tooling/01.3-registry-pattern/SPEC.md) `✅ Done` (commit: `f143dc6`)
 - [x] [01.4 — Ejecutor de Tipos](../sdd/01-core-tooling/01.4-ejecutor-tipos/SPEC.md) `✅ Done` (commit: `e0f15c1`)
 - [x] [02.1 — Agente Orquestador](../sdd/02-loop-orquestacion/02.1-agente-orquestador/SPEC.md) `✅ Done` (commit: `a624cb4`)
+- [x] [02.2 — Manejo de Estados](../sdd/02-loop-orquestacion/02.2-manejo-estados/SPEC.md) `✅ Done` (commit: `bd706fd`)
