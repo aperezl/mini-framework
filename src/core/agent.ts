@@ -66,7 +66,7 @@ export interface LLMProvider {
   chatStream?(
     messages: ChatMessage[],
     options?: { tools?: any[] }
-  ): Promise<AsyncIterable<LLMStreamChunk>>;
+  ): Promise<AsyncIterable<LLMStreamChunk>> | AsyncIterable<LLMStreamChunk>;
 }
 
 export interface AgentOptions {
