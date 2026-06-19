@@ -6,7 +6,7 @@
 - Milestone 01: Core - Tooling `██████████ 100%`
 - Milestone 02: El Loop - Orquestación y Estados `██████████ 100%`
 - Milestone 03: Persistencia y Local-First `██████████ 100%`
-- Milestone 04: DX y Extensibilidad `██████░░░░ 66%`
+- Milestone 04: DX y Extensibilidad `██████████ 100%`
 
 ## Active Tasks
 
@@ -27,7 +27,7 @@
 *None*
 
 ### Milestone 04: DX y Extensibilidad
-- [ ] [04.3 — MCP Integration](../sdd/04-dx-extensibilidad/04.3-mcp-integration/SPEC.md)
+*None*
 
 ## Completed Tasks
 
@@ -45,3 +45,4 @@
 - [x] [03.2 — Serialización](../sdd/03-persistencia/03.2-serializacion/SPEC.md) `✅ Done` (commit: `af5cd26`)
 - [x] [04.1 — Middleware](../sdd/04-dx-extensibilidad/04.1-middleware/SPEC.md) `✅ Done` (commit: `dfeb2ec`)
 - [x] [04.2 — Streaming](../sdd/04-dx-extensibilidad/04.2-streaming/SPEC.md) `✅ Done` (commit: `3544cad`)
+- [x] [04.3 — MCP Integration](../sdd/04-dx-extensibilidad/04.3-mcp-integration/SPEC.md) `✅ Done` (commit: `6602b0a`)
