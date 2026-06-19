@@ -10,12 +10,12 @@
 
 ## Active Tasks
 
-*None*
+- [ ] [00.3 — Configuración de Vitest](../sdd/00-get-started/00.3-setup-vitest/SPEC.md) `🔄 In Progress`
 
 ## Next Up
 
 ### Milestone 00: Get Started
-- [ ] [00.3 — Configuración de Vitest](../sdd/00-get-started/00.3-setup-vitest/SPEC.md)
+*None*
 
 ### Milestone 01: Core - Tooling
 - [ ] [01.1 — Definición de Contrato](../sdd/01-core-tooling/01.1-definicion-contrato/SPEC.md)
