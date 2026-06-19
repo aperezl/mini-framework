@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { DatabaseSync } from 'node:sqlite';
-import { SQLiteMemoryAdapter } from './sqlite.js';
-import { ChatMessage } from '../core/agent.js';
+import { SQLiteMemoryAdapter } from './sqlite';
+import { ChatMessage } from '../core/agent';
 
 describe('SQLiteMemoryAdapter', () => {
   it('saves and retrieves basic messages in order', async () => {

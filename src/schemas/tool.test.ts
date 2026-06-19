@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { z } from 'zod';
-import { Tool, executeTool } from './tool.js';
+import { Tool, executeTool } from './tool';
 
 describe('Tool Contract Interface', () => {
   const addSchema = z.object({

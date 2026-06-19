@@ -1,6 +1,6 @@
-import { ToolRegistry } from './registry.js';
-import { executeTool } from '../schemas/tool.js';
-import { Middleware } from './middleware.js';
+import { ToolRegistry } from './registry';
+import { executeTool } from '../schemas/tool';
+import { Middleware } from './middleware';
 
 export interface ToolCall {
   id: string;

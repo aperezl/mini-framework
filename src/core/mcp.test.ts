@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { MCPClient, jsonSchemaToZod } from './mcp.js';
-import { ToolRegistry } from './registry.js';
+import { MCPClient, jsonSchemaToZod } from './mcp';
+import { ToolRegistry } from './registry';
 import { z } from 'zod';
-import { zodToJson } from '../utils/json-schema.js';
+import { zodToJson } from '../utils/json-schema';
 
 describe('jsonSchemaToZod', () => {
   it('converts basic json schema to a matching Zod schema shape', () => {

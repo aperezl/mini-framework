@@ -1,5 +1,5 @@
 import { DatabaseSync } from 'node:sqlite';
-import { ChatMessage, ToolCall } from '../core/agent.js';
+import { ChatMessage, ToolCall } from '../core/agent';
 
 export interface MemoryAdapter {
   getHistory(sessionId: string): Promise<ChatMessage[]>;

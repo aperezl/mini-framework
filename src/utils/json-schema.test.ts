@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { z } from 'zod';
-import { zodToJson } from './json-schema.js';
+import { zodToJson } from './json-schema';
 
 describe('JSON Schema Generator', () => {
   it('should transform a ZodSchema to a valid JSON Schema with key fields', () => {

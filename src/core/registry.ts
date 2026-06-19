@@ -1,5 +1,5 @@
-import { Tool } from '../schemas/tool.js';
-import { zodToJson } from '../utils/json-schema.js';
+import { Tool } from '../schemas/tool';
+import { zodToJson } from '../utils/json-schema';
 
 export class ToolRegistry {
   private tools = new Map<string, Tool>();

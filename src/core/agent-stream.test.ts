@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { z } from 'zod';
-import { Agent, ChatMessage, LLMProvider, AgentStreamChunk, LLMStreamChunk } from './agent.js';
-import { ToolRegistry } from './registry.js';
-import { Tool } from '../schemas/tool.js';
+import { Agent, ChatMessage, LLMProvider, AgentStreamChunk, LLMStreamChunk } from './agent';
+import { ToolRegistry } from './registry';
+import { Tool } from '../schemas/tool';
 
 describe('Agent Streaming Loop', () => {
   const addSchema = z.object({

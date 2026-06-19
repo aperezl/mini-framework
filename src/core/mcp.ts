@@ -1,6 +1,6 @@
 import { spawn, ChildProcess } from 'child_process';
 import { z } from 'zod';
-import { Tool } from '../schemas/tool.js';
+import { Tool } from '../schemas/tool';
 
 export function jsonSchemaToZod(jsonSchema: any): z.ZodTypeAny {
   if (!jsonSchema) return z.any();

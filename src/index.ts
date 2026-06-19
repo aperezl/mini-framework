@@ -1,5 +1,5 @@
-export { Tool, executeTool } from './schemas/tool.js';
-export { ToolRegistry } from './core/registry.js';
+export { Tool, executeTool } from './schemas/tool';
+export { ToolRegistry } from './core/registry';
 export {
   Agent,
   ChatMessage,
@@ -13,8 +13,8 @@ export {
   AgentOptions,
   LLMStreamChunk,
   AgentStreamChunk,
-} from './core/agent.js';
-export { zodToJson } from './utils/json-schema.js';
-export { MemoryAdapter, SQLiteMemoryAdapter } from './storage/sqlite.js';
-export { Middleware, MiddlewareContext } from './core/middleware.js';
-export { MCPClient, jsonSchemaToZod } from './core/mcp.js';
+} from './core/agent';
+export { zodToJson } from './utils/json-schema';
+export { MemoryAdapter, SQLiteMemoryAdapter } from './storage/sqlite';
+export { Middleware, MiddlewareContext } from './core/middleware';
+export { MCPClient, jsonSchemaToZod } from './core/mcp';

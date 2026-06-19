@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { z } from 'zod';
-import { Tool } from '../schemas/tool.js';
-import { ToolRegistry } from './registry.js';
+import { Tool } from '../schemas/tool';
+import { ToolRegistry } from './registry';
 
 describe('ToolRegistry', () => {
   const dummySchema = z.object({
