@@ -40,4 +40,4 @@
 
 ## Completed Tasks
 
-- [x] [00.1 — Inicialización de package.json](file:///Users/aperezl/ai/mini-framework/docs/sdd/00-get-started/00.1-init-package/SPEC.md) `✅ Done` (commit: `HEAD`)
+- [x] [00.1 — Inicialización de package.json](file:///Users/aperezl/ai/mini-framework/docs/sdd/00-get-started/00.1-init-package/SPEC.md) `✅ Done` (commit: `83b87b4`)
