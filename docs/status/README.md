@@ -2,7 +2,7 @@
 
 ## Progress
 
-- Elemento 00: Get Started `███░░░░░░░ 33%`
+- Elemento 00: Get Started `██████░░░░ 66%`
 - Milestone 01: Core - Tooling `░░░░░░░░░░ 0%`
 - Milestone 02: El Loop - Orquestación y Estados `░░░░░░░░░░ 0%`
 - Milestone 03: Persistencia y Local-First `░░░░░░░░░░ 0%`
@@ -10,7 +10,7 @@
 
 ## Active Tasks
 
-- [ ] [00.2 — Configuración de TypeScript](../sdd/00-get-started/00.2-setup-typescript/SPEC.md) `🔄 In Progress`
+*None*
 
 ## Next Up
 
@@ -40,3 +40,4 @@
 ## Completed Tasks
 
 - [x] [00.1 — Inicialización de package.json](../sdd/00-get-started/00.1-init-package/SPEC.md) `✅ Done` (commit: `83b87b4`)
+- [x] [00.2 — Configuración de TypeScript](../sdd/00-get-started/00.2-setup-typescript/SPEC.md) `✅ Done` (commit: `HEAD`)
