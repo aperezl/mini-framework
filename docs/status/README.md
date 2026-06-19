@@ -41,4 +41,4 @@
 - [x] [00.3 — Configuración de Vitest](../sdd/00-get-started/00.3-setup-vitest/SPEC.md) `✅ Done` (commit: `fd177b2`)
 - [x] [01.1 — Definición de Contrato](../sdd/01-core-tooling/01.1-definicion-contrato/SPEC.md) `✅ Done` (commit: `2c774bc`)
 - [x] [01.2 — Generador de Schema](../sdd/01-core-tooling/01.2-generador-schema/SPEC.md) `✅ Done` (commit: `67b5bcf`)
-- [x] [01.3 — Registry Pattern](../sdd/01-core-tooling/01.3-registry-pattern/SPEC.md) `✅ Done` (commit: `HEAD`)
+- [x] [01.3 — Registry Pattern](../sdd/01-core-tooling/01.3-registry-pattern/SPEC.md) `✅ Done` (commit: `f143dc6`)
