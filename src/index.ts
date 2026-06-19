@@ -26,3 +26,6 @@ export type { MemoryAdapter } from './storage/sqlite';
 export type { Middleware, MiddlewareContext } from './core/middleware';
 
 export { MCPClient, jsonSchemaToZod } from './core/mcp';
+
+export { OllamaProvider } from './adapters/llm/ollama';
+export type { OllamaProviderOptions } from './adapters/llm/ollama';

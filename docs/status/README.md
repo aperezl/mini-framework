@@ -9,10 +9,11 @@
 - Milestone 04: DX y Extensibilidad `██████████ 100%`
 - Milestone 05: Ejemplos Prácticos `██████████ 100%`
 - Milestone 06: Documentación del Proyecto `██████████ 100%`
+- Milestone 07: Integración de Ollama `░░░░░░░░░░ 0%`
 
 ## Active Tasks
 
-*None*
+* [07.1 — Arquitectura Limpia y Proveedor Ollama](../sdd/07-ollama/07.1-arquitectura-limpia/SPEC.md)
 
 ## Next Up
 
@@ -35,6 +36,9 @@
 *None*
 
 ### Milestone 06: Documentación del Proyecto
+*None*
+
+### Milestone 07: Integración de Ollama
 *None*
 
 ## Completed Tasks
