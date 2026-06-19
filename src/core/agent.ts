@@ -59,7 +59,7 @@ export class Agent {
     this.maxIterations = options.maxIterations ?? 10;
   }
 
-  async run(messages: ChatMessage[]): Promise<ChatMessage[]> {
+  async run(messages: ChatMessage[], context?: any): Promise<ChatMessage[]> {
     const history = [...messages];
     let iterations = 0;
 
@@ -102,7 +102,7 @@ export class Agent {
           );
         }
 
-        const result = await executeTool(tool, parsedArgs);
+        const result = await executeTool(tool, parsedArgs, context);
         
         history.push({
           role: 'tool',

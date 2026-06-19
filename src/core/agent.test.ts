@@ -261,5 +261,69 @@ describe('Agent Orchestrator', () => {
     expect(result[5].role).toBe('assistant');
     expect(result[5].content).toBe('Final result is 35.');
   });
+
+  it('injects context object into tools during execution', async () => {
+    const registry = new ToolRegistry();
+
+    interface LogContext {
+      logs: string[];
+      log(msg: string): void;
+    }
+
+    const logSchema = z.object({
+      message: z.string(),
+    });
+
+    const loggerTool: Tool<typeof logSchema, void> = {
+      name: 'log_info',
+      description: 'Log some message',
+      schema: logSchema,
+      execute: async ({ message }, context: LogContext) => {
+        context.log(message);
+      },
+    };
+
+    registry.register(loggerTool);
+
+    const chatMock = vi.fn();
+    chatMock.mockResolvedValueOnce({
+      message: {
+        role: 'assistant',
+        content: null,
+        tool_calls: [
+          {
+            id: 'call_999',
+            type: 'function',
+            function: {
+              name: 'log_info',
+              arguments: JSON.stringify({ message: 'Hello from LLM' }),
+            },
+          },
+        ],
+      },
+      finish_reason: 'tool_calls',
+    });
+    chatMock.mockResolvedValueOnce({
+      message: {
+        role: 'assistant',
+        content: 'Logged.',
+      },
+      finish_reason: 'stop',
+    });
+
+    const provider: LLMProvider = { chat: chatMock };
+
+    const agent = new Agent(registry, provider);
+    const mockContext: LogContext = {
+      logs: [],
+      log(msg: string) {
+        this.logs.push(msg);
+      },
+    };
+
+    await agent.run([{ role: 'user', content: 'log something' }], mockContext);
+
+    expect(mockContext.logs).toContain('Hello from LLM');
+  });
 });
 
