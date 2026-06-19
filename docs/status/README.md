@@ -10,12 +10,11 @@
 
 ## Active Tasks
 
-*None*
+- [ ] [00.1 — Inicialización de package.json](file:///Users/aperezl/ai/mini-framework/docs/sdd/00-get-started/00.1-init-package/SPEC.md) `🔄 In Progress`
 
 ## Next Up
 
 ### Milestone 00: Get Started
-- [ ] [00.1 — Inicialización de package.json](file:///Users/aperezl/ai/mini-framework/docs/sdd/00-get-started/00.1-init-package/SPEC.md)
 - [ ] [00.2 — Configuración de TypeScript](file:///Users/aperezl/ai/mini-framework/docs/sdd/00-get-started/00.2-setup-typescript/SPEC.md)
 - [ ] [00.3 — Configuración de Vitest](file:///Users/aperezl/ai/mini-framework/docs/sdd/00-get-started/00.3-setup-vitest/SPEC.md)
 
