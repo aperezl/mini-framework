@@ -4,5 +4,5 @@ Un framework serio debe permitir que las tareas se pausen y reanuden utilizando 
 
 ## Tareas
 
-- [ ] [03.1 — Adaptador de Memoria](file:///Users/aperezl/ai/mini-framework/docs/sdd/03-persistencia/03.1-adaptador-memoria/SPEC.md)
-- [ ] [03.2 — Serialización](file:///Users/aperezl/ai/mini-framework/docs/sdd/03-persistencia/03.2-serializacion/SPEC.md)
+- [ ] [03.1 — Adaptador de Memoria](./03.1-adaptador-memoria/SPEC.md)
+- [ ] [03.2 — Serialización](./03.2-serializacion/SPEC.md)
