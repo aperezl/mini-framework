@@ -17,3 +17,4 @@ export {
 export { zodToJson } from './utils/json-schema.js';
 export { MemoryAdapter, SQLiteMemoryAdapter } from './storage/sqlite.js';
 export { Middleware, MiddlewareContext } from './core/middleware.js';
+export { MCPClient, jsonSchemaToZod } from './core/mcp.js';
