@@ -7,7 +7,7 @@
 - Milestone 02: El Loop - Orquestación y Estados `██████████ 100%`
 - Milestone 03: Persistencia y Local-First `██████████ 100%`
 - Milestone 04: DX y Extensibilidad `██████████ 100%`
-- Milestone 05: Ejemplos Prácticos `░░░░░░░░░░ 0%`
+- Milestone 05: Ejemplos Prácticos `██████████ 100%`
 - Milestone 06: Documentación del Proyecto `░░░░░░░░░░ 0%`
 
 ## Active Tasks
@@ -32,7 +32,7 @@
 *None*
 
 ### Milestone 05: Ejemplos Prácticos
-- [/] [05.1 — Ejemplos Integrados](../sdd/05-ejemplos/05.1-ejemplos-integrados/SPEC.md)
+*None*
 
 ### Milestone 06: Documentación del Proyecto
 - [ ] [06.1 — Documentación Paso a Paso](../sdd/06-documentacion/06.1-doc-paso-a-paso/SPEC.md)
@@ -54,3 +54,4 @@
 - [x] [04.1 — Middleware](../sdd/completed/04-dx-extensibilidad/04.1-middleware/SPEC.md) `✅ Done` (commit: `dfeb2ec`)
 - [x] [04.2 — Streaming](../sdd/completed/04-dx-extensibilidad/04.2-streaming/SPEC.md) `✅ Done` (commit: `3544cad`)
 - [x] [04.3 — MCP Integration](../sdd/completed/04-dx-extensibilidad/04.3-mcp-integration/SPEC.md) `✅ Done` (commit: `6602b0a`)
+- [x] [05.1 — Ejemplos Integrados](../sdd/05-ejemplos/05.1-ejemplos-integrados/SPEC.md) `✅ Done` (commit: `0a77072`)
