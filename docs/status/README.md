@@ -5,7 +5,7 @@
 - Elemento 00: Get Started `██████████ 100%`
 - Milestone 01: Core - Tooling `██████████ 100%`
 - Milestone 02: El Loop - Orquestación y Estados `██████████ 100%`
-- Milestone 03: Persistencia y Local-First `░░░░░░░░░░ 0%`
+- Milestone 03: Persistencia y Local-First `█████░░░░░ 50%`
 - Milestone 04: DX y Extensibilidad `░░░░░░░░░░ 0%`
 
 ## Active Tasks
@@ -24,7 +24,6 @@
 *None*
 
 ### Milestone 03: Persistencia y Local-First
-- [ ] [03.1 — Adaptador de Memoria](../sdd/03-persistencia/03.1-adaptador-memoria/SPEC.md)
 - [ ] [03.2 — Serialización](../sdd/03-persistencia/03.2-serializacion/SPEC.md)
 
 ### Milestone 04: DX y Extensibilidad
@@ -44,3 +43,4 @@
 - [x] [02.1 — Agente Orquestador](../sdd/02-loop-orquestacion/02.1-agente-orquestador/SPEC.md) `✅ Done` (commit: `a624cb4`)
 - [x] [02.2 — Manejo de Estados](../sdd/02-loop-orquestacion/02.2-manejo-estados/SPEC.md) `✅ Done` (commit: `bd706fd`)
 - [x] [02.3 — Contexto & State](../sdd/02-loop-orquestacion/02.3-contexto-state/SPEC.md) `✅ Done` (commit: `0da930f`)
+- [x] [03.1 — Adaptador de Memoria](../sdd/03-persistencia/03.1-adaptador-memoria/SPEC.md) `✅ Done` (commit: `8f700a0`)
