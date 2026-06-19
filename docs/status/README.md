@@ -3,14 +3,14 @@
 ## Progress
 
 - Elemento 00: Get Started `██████████ 100%`
-- Milestone 01: Core - Tooling `████████░░ 75%`
+- Milestone 01: Core - Tooling `██████████ 100%`
 - Milestone 02: El Loop - Orquestación y Estados `░░░░░░░░░░ 0%`
 - Milestone 03: Persistencia y Local-First `░░░░░░░░░░ 0%`
 - Milestone 04: DX y Extensibilidad `░░░░░░░░░░ 0%`
 
 ## Active Tasks
 
-- [ ] [01.4 — Ejecutor de Tipos](../sdd/01-core-tooling/01.4-ejecutor-tipos/SPEC.md) `🔄 In Progress`
+*None*
 
 ## Next Up
 
@@ -42,3 +42,4 @@
 - [x] [01.1 — Definición de Contrato](../sdd/01-core-tooling/01.1-definicion-contrato/SPEC.md) `✅ Done` (commit: `2c774bc`)
 - [x] [01.2 — Generador de Schema](../sdd/01-core-tooling/01.2-generador-schema/SPEC.md) `✅ Done` (commit: `67b5bcf`)
 - [x] [01.3 — Registry Pattern](../sdd/01-core-tooling/01.3-registry-pattern/SPEC.md) `✅ Done` (commit: `f143dc6`)
+- [x] [01.4 — Ejecutor de Tipos](../sdd/01-core-tooling/01.4-ejecutor-tipos/SPEC.md) `✅ Done` (commit: `HEAD`)
