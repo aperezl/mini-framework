@@ -6,7 +6,7 @@
 - Milestone 01: Core - Tooling `██████████ 100%`
 - Milestone 02: El Loop - Orquestación y Estados `██████████ 100%`
 - Milestone 03: Persistencia y Local-First `██████████ 100%`
-- Milestone 04: DX y Extensibilidad `░░░░░░░░░░ 0%`
+- Milestone 04: DX y Extensibilidad `███░░░░░░░ 33%`
 
 ## Active Tasks
 
@@ -27,7 +27,6 @@
 *None*
 
 ### Milestone 04: DX y Extensibilidad
-- [ ] [04.1 — Middleware](../sdd/04-dx-extensibilidad/04.1-middleware/SPEC.md)
 - [ ] [04.2 — Streaming](../sdd/04-dx-extensibilidad/04.2-streaming/SPEC.md)
 - [ ] [04.3 — MCP Integration](../sdd/04-dx-extensibilidad/04.3-mcp-integration/SPEC.md)
 
@@ -45,3 +44,4 @@
 - [x] [02.3 — Contexto & State](../sdd/02-loop-orquestacion/02.3-contexto-state/SPEC.md) `✅ Done` (commit: `0da930f`)
 - [x] [03.1 — Adaptador de Memoria](../sdd/03-persistencia/03.1-adaptador-memoria/SPEC.md) `✅ Done` (commit: `8f700a0`)
 - [x] [03.2 — Serialización](../sdd/03-persistencia/03.2-serializacion/SPEC.md) `✅ Done` (commit: `af5cd26`)
+- [x] [04.1 — Middleware](../sdd/04-dx-extensibilidad/04.1-middleware/SPEC.md) `✅ Done` (commit: `dfeb2ec`)
