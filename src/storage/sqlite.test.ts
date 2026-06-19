@@ -85,4 +85,74 @@ describe('SQLiteMemoryAdapter', () => {
     expect(history).toHaveLength(1);
     expect(history[0]).toEqual(msg);
   });
+
+  it('correctly handles serialization of edge-case contents, multiple tool calls, and error strings', async () => {
+    const db = new DatabaseSync(':memory:');
+    const adapter = new SQLiteMemoryAdapter(db);
+    const sessionId = 'session_edge';
+
+    // 1. Message with special characters, JSON content inside user text, and emojis
+    const specialMsg: ChatMessage = {
+      role: 'user',
+      content: 'Hello!\nHere is some JSON:\n{"key": "value", "escaped_quotes": "\\"hello\\""}\n🚀🔥',
+    };
+
+    // 2. Assistant message with multiple concurrent tool calls
+    const multipleToolsMsg: ChatMessage = {
+      role: 'assistant',
+      tool_calls: [
+        {
+          id: 'call_1',
+          type: 'function',
+          function: {
+            name: 'first_tool',
+            arguments: '{"a": 1}',
+          },
+        },
+        {
+          id: 'call_2',
+          type: 'function',
+          function: {
+            name: 'second_tool',
+            arguments: '{"b": [true, false]}',
+          },
+        },
+      ],
+    };
+
+    // 3. Tool response message containing serialized error or stack trace
+    const errorToolMsg: ChatMessage = {
+      role: 'tool',
+      tool_call_id: 'call_2',
+      name: 'second_tool',
+      content: JSON.stringify({
+        status: 'error',
+        message: 'Database query timeout',
+        code: 504,
+        details: 'at executeQuery (db.ts:45:12)\nat async second_tool.execute (tool.ts:12:9)',
+      }),
+    };
+
+    await adapter.saveMessage(sessionId, specialMsg);
+    await adapter.saveMessage(sessionId, multipleToolsMsg);
+    await adapter.saveMessage(sessionId, errorToolMsg);
+
+    const history = await adapter.getHistory(sessionId);
+    expect(history).toHaveLength(3);
+
+    expect(history[0]).toEqual(specialMsg);
+    expect(history[1]).toEqual(multipleToolsMsg);
+    expect(history[2]).toEqual(errorToolMsg);
+
+    // Verify properties of parsed JSON content are fully intact
+    const toolMsg = history[2];
+    if (toolMsg.role === 'tool') {
+      const parsedError = JSON.parse(toolMsg.content);
+      expect(parsedError.status).toBe('error');
+      expect(parsedError.code).toBe(504);
+      expect(parsedError.details).toContain('at executeQuery');
+    } else {
+      expect.fail('Expected third message to be a ToolMessage');
+    }
+  });
 });
