@@ -7,6 +7,8 @@
 - Milestone 02: El Loop - Orquestación y Estados `██████████ 100%`
 - Milestone 03: Persistencia y Local-First `██████████ 100%`
 - Milestone 04: DX y Extensibilidad `██████████ 100%`
+- Milestone 05: Ejemplos Prácticos `░░░░░░░░░░ 0%`
+- Milestone 06: Documentación del Proyecto `░░░░░░░░░░ 0%`
 
 ## Active Tasks
 
@@ -28,6 +30,12 @@
 
 ### Milestone 04: DX y Extensibilidad
 *None*
+
+### Milestone 05: Ejemplos Prácticos
+- [ ] [05.1 — Ejemplos Integrados](../sdd/05-ejemplos/05.1-ejemplos-integrados/SPEC.md)
+
+### Milestone 06: Documentación del Proyecto
+- [ ] [06.1 — Documentación Paso a Paso](../sdd/06-documentacion/06.1-doc-paso-a-paso/SPEC.md)
 
 ## Completed Tasks
 

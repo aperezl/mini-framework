@@ -42,6 +42,14 @@ Aquí es donde conviertes una "librería" en un "framework".
 2. **Streaming:** Implementa el soporte para `ReadableStream`. La latencia en LLMs es alta; si el usuario no ve el texto fluir, la experiencia es pobre.
 3. **MCP Integration:** Crea un cliente que pueda "leer" servidores MCP. Esto dará a tu framework la capacidad de conectarse a herramientas existentes en el ecosistema (Postgres, GitHub, Slack, etc.) sin que tengas que escribirlas tú.
 
+### Fase 5: Ejemplos Prácticos e Integrados
+
+1. **Ejemplos Integrados:** Crea una carpeta `/examples` con scripts funcionales que consuman el mini-framework para demostrar cómo orquestar agentes con herramientas, persistencia SQLite, middleware, streaming y el cliente MCP.
+
+### Fase 6: Documentación del Proyecto
+
+1. **Guías Paso a Paso:** Documentar detalladamente en el directorio `/docs` el diseño del core, el ciclo de ejecución, middlewares, base de datos local y conectividad MCP externa para guiar a los desarrolladores.
+
 ---
 
 ### Arquitectura de directorios recomendada
