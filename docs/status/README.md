@@ -54,5 +54,5 @@
 - [x] [04.1 — Middleware](../sdd/completed/04-dx-extensibilidad/04.1-middleware/SPEC.md) `✅ Done` (commit: `dfeb2ec`)
 - [x] [04.2 — Streaming](../sdd/completed/04-dx-extensibilidad/04.2-streaming/SPEC.md) `✅ Done` (commit: `3544cad`)
 - [x] [04.3 — MCP Integration](../sdd/completed/04-dx-extensibilidad/04.3-mcp-integration/SPEC.md) `✅ Done` (commit: `6602b0a`)
-- [x] [05.1 — Ejemplos Integrados](../sdd/05-ejemplos/05.1-ejemplos-integrados/SPEC.md) `✅ Done` (commit: `0a77072`)
-- [x] [06.1 — Documentación Paso a Paso](../sdd/06-documentacion/06.1-doc-paso-a-paso/SPEC.md) `✅ Done` (commit: `ac4e01b`)
+- [x] [05.1 — Ejemplos Integrados](../sdd/completed/05-ejemplos/05.1-ejemplos-integrados/SPEC.md) `✅ Done` (commit: `0a77072`)
+- [x] [06.1 — Documentación Paso a Paso](../sdd/completed/06-documentacion/06.1-doc-paso-a-paso/SPEC.md) `✅ Done` (commit: `ac4e01b`)
