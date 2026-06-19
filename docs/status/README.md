@@ -9,11 +9,11 @@
 - Milestone 04: DX y Extensibilidad `██████████ 100%`
 - Milestone 05: Ejemplos Prácticos `██████████ 100%`
 - Milestone 06: Documentación del Proyecto `██████████ 100%`
-- Milestone 07: Integración de Ollama `░░░░░░░░░░ 0%`
+- Milestone 07: Integración de Ollama `██████████ 100%`
 
 ## Active Tasks
 
-* [07.1 — Arquitectura Limpia y Proveedor Ollama](../sdd/07-ollama/07.1-arquitectura-limpia/SPEC.md)
+*None*
 
 ## Next Up
 
@@ -60,3 +60,4 @@
 - [x] [04.3 — MCP Integration](../sdd/completed/04-dx-extensibilidad/04.3-mcp-integration/SPEC.md) `✅ Done` (commit: `6602b0a`)
 - [x] [05.1 — Ejemplos Integrados](../sdd/completed/05-ejemplos/05.1-ejemplos-integrados/SPEC.md) `✅ Done` (commit: `0a77072`)
 - [x] [06.1 — Documentación Paso a Paso](../sdd/completed/06-documentacion/06.1-doc-paso-a-paso/SPEC.md) `✅ Done` (commit: `ac4e01b`)
+- [x] [07.1 — Arquitectura Limpia y Proveedor Ollama](../sdd/completed/07-ollama/07.1-arquitectura-limpia/SPEC.md) `✅ Done` (commit: `364802b`)
