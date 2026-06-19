@@ -13,3 +13,4 @@ export {
   AgentOptions,
 } from './core/agent.js';
 export { zodToJson } from './utils/json-schema.js';
+export { MemoryAdapter, SQLiteMemoryAdapter } from './storage/sqlite.js';
