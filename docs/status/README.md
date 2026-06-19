@@ -12,7 +12,7 @@
 
 ## Active Tasks
 
-*None*
+* [06.1 — Documentación Paso a Paso](../sdd/06-documentacion/06.1-doc-paso-a-paso/SPEC.md)
 
 ## Next Up
 
@@ -35,7 +35,7 @@
 *None*
 
 ### Milestone 06: Documentación del Proyecto
-- [ ] [06.1 — Documentación Paso a Paso](../sdd/06-documentacion/06.1-doc-paso-a-paso/SPEC.md)
+*None*
 
 ## Completed Tasks
 
