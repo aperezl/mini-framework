@@ -1,5 +1,6 @@
 import { ToolRegistry } from './registry.js';
 import { executeTool } from '../schemas/tool.js';
+import { Middleware } from './middleware.js';
 
 export interface ToolCall {
   id: string;
@@ -46,17 +47,24 @@ export interface LLMProvider {
 
 export interface AgentOptions {
   maxIterations?: number;
+  middlewares?: Middleware[];
 }
 
 export class Agent {
   private registry: ToolRegistry;
   private provider: LLMProvider;
   private maxIterations: number;
+  private middlewares: Middleware[] = [];
 
   constructor(registry: ToolRegistry, provider: LLMProvider, options: AgentOptions = {}) {
     this.registry = registry;
     this.provider = provider;
     this.maxIterations = options.maxIterations ?? 10;
+    this.middlewares = options.middlewares ?? [];
+  }
+
+  use(middleware: Middleware): void {
+    this.middlewares.push(middleware);
   }
 
   async run(messages: ChatMessage[], context?: any): Promise<ChatMessage[]> {
@@ -91,7 +99,7 @@ export class Agent {
           throw new Error(`Tool not found in registry: "${toolName}"`);
         }
 
-        let parsedArgs: unknown;
+        let parsedArgs: any;
         try {
           parsedArgs = JSON.parse(toolCall.function.arguments);
         } catch (e) {
@@ -102,7 +110,31 @@ export class Agent {
           );
         }
 
-        const result = await executeTool(tool, parsedArgs, context);
+        // Run beforeExecute middlewares
+        let currentParams = parsedArgs;
+        for (const mw of this.middlewares) {
+          if (mw.toolName && mw.toolName !== toolName) continue;
+          if (mw.beforeExecute) {
+            const res = await mw.beforeExecute(currentParams, { toolName, context });
+            if (res !== undefined) {
+              currentParams = res;
+            }
+          }
+        }
+
+        // Execute the tool
+        let result = await executeTool(tool, currentParams, context);
+
+        // Run afterExecute middlewares
+        for (const mw of this.middlewares) {
+          if (mw.toolName && mw.toolName !== toolName) continue;
+          if (mw.afterExecute) {
+            const res = await mw.afterExecute(result, currentParams, { toolName, context });
+            if (res !== undefined) {
+              result = res;
+            }
+          }
+        }
         
         history.push({
           role: 'tool',
