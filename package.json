@@ -5,7 +5,12 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "example:basic": "tsx examples/basic-agent.ts",
+    "example:persist": "tsx examples/persistent-agent.ts",
+    "example:middleware": "tsx examples/middleware-agent.ts",
+    "example:stream": "tsx examples/streaming-agent.ts",
+    "example:mcp": "tsx examples/mcp-agent.ts"
   },
   "engines": {
     "node": ">=24.0.0"

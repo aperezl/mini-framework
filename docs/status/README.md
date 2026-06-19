@@ -32,7 +32,7 @@
 *None*
 
 ### Milestone 05: Ejemplos Prácticos
-- [ ] [05.1 — Ejemplos Integrados](../sdd/05-ejemplos/05.1-ejemplos-integrados/SPEC.md)
+- [/] [05.1 — Ejemplos Integrados](../sdd/05-ejemplos/05.1-ejemplos-integrados/SPEC.md)
 
 ### Milestone 06: Documentación del Proyecto
 - [ ] [06.1 — Documentación Paso a Paso](../sdd/06-documentacion/06.1-doc-paso-a-paso/SPEC.md)

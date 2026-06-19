@@ -1,7 +1,10 @@
-export { Tool, executeTool } from './schemas/tool';
+export { executeTool } from './schemas/tool';
+export type { Tool } from './schemas/tool';
+
 export { ToolRegistry } from './core/registry';
-export {
-  Agent,
+
+export { Agent } from './core/agent';
+export type {
   ChatMessage,
   UserMessage,
   AssistantMessage,
@@ -14,7 +17,12 @@ export {
   LLMStreamChunk,
   AgentStreamChunk,
 } from './core/agent';
+
 export { zodToJson } from './utils/json-schema';
-export { MemoryAdapter, SQLiteMemoryAdapter } from './storage/sqlite';
-export { Middleware, MiddlewareContext } from './core/middleware';
+
+export { SQLiteMemoryAdapter } from './storage/sqlite';
+export type { MemoryAdapter } from './storage/sqlite';
+
+export type { Middleware, MiddlewareContext } from './core/middleware';
+
 export { MCPClient, jsonSchemaToZod } from './core/mcp';
