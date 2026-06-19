@@ -8,7 +8,7 @@ High-level status of the lightweight LLM orchestration framework build phases.
   - [x] 00.3 — Configuración de Vitest
 - [ ] **Milestone 01: Core - Tooling**
   - [x] 01.1 — Definición de Contrato
-  - [ ] 01.2 — Generador de Schema
+  - [x] 01.2 — Generador de Schema
   - [ ] 01.3 — Registry Pattern
   - [ ] 01.4 — Ejecutor de Tipos
 - [ ] **Milestone 02: El Loop - Orquestación y Estados**
