@@ -3,7 +3,7 @@
 High-level status of the lightweight LLM orchestration framework build phases.
 
 - [ ] **Milestone 00: Get Started**
-  - [ ] 00.1 — Inicialización de package.json
+  - [x] 00.1 — Inicialización de package.json
   - [ ] 00.2 — Configuración de TypeScript
   - [ ] 00.3 — Configuración de Vitest
 - [ ] **Milestone 01: Core - Tooling**

@@ -2,7 +2,7 @@
 
 ## Progress
 
-- Elemento 00: Get Started `░░░░░░░░░░ 0%`
+- Elemento 00: Get Started `███░░░░░░░ 33%`
 - Milestone 01: Core - Tooling `░░░░░░░░░░ 0%`
 - Milestone 02: El Loop - Orquestación y Estados `░░░░░░░░░░ 0%`
 - Milestone 03: Persistencia y Local-First `░░░░░░░░░░ 0%`
@@ -10,7 +10,7 @@
 
 ## Active Tasks
 
-- [ ] [00.1 — Inicialización de package.json](file:///Users/aperezl/ai/mini-framework/docs/sdd/00-get-started/00.1-init-package/SPEC.md) `🔄 In Progress`
+*None*
 
 ## Next Up
 
@@ -40,4 +40,4 @@
 
 ## Completed Tasks
 
-*None*
+- [x] [00.1 — Inicialización de package.json](file:///Users/aperezl/ai/mini-framework/docs/sdd/00-get-started/00.1-init-package/SPEC.md) `✅ Done` (commit: `HEAD`)
