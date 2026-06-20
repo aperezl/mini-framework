@@ -45,7 +45,7 @@ async function main() {
   // 3. Initialize Ollama Provider
   // Defaults to http://localhost:11434 and llama3.1 model
   const provider = new OllamaProvider({
-    model: 'llama3.1',
+    model: 'gemma4:e2b',
   });
 
   // 4. Create Agent
