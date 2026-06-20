@@ -11,7 +11,8 @@
     "example:middleware": "tsx examples/middleware-agent.ts",
     "example:stream": "tsx examples/streaming-agent.ts",
     "example:mcp": "tsx examples/mcp-agent.ts",
-    "example:ollama": "tsx examples/ollama-agent.ts"
+    "example:ollama": "tsx examples/ollama-agent.ts",
+    "example:ollama:stream": "tsx examples/ollama-streaming-agent.ts"
   },
   "engines": {
     "node": ">=24.0.0"
