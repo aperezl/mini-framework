@@ -221,8 +221,7 @@ export class Agent {
 
             // Determine if we should exit
             if (
-              finalFinishReason === 'stop' ||
-              assistantMsg.tool_calls === undefined ||
+              !assistantMsg.tool_calls ||
               assistantMsg.tool_calls.length === 0
             ) {
               controller.close();

@@ -24,8 +24,10 @@ export class OllamaProvider implements LLMProvider {
       if (msg.role === 'assistant') {
         const formatted: any = {
           role: 'assistant',
-          content: msg.content ?? '',
         };
+        if (msg.content) {
+          formatted.content = msg.content;
+        }
         if (msg.tool_calls && msg.tool_calls.length > 0) {
           formatted.tool_calls = msg.tool_calls.map((tc) => {
             let parsedArgs = tc.function.arguments;
