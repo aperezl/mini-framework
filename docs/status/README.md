@@ -11,11 +11,11 @@
 - Milestone 06: Documentación del Proyecto `██████████ 100%`
 - Milestone 07: Integración de Ollama `██████████ 100%`
 - Milestone 08: Refactorización Modular `██████████ 100%`
-- Milestone 09: Runtime YAML `███████▌░░ 75%`
+- Milestone 09: Runtime YAML `██████████ 100%`
 
 ## Active Tasks
 
-- [ ] [09.4 — CLI Runner & Integration Examples](../sdd/09-yaml-runtime/09.4-cli-runner/SPEC.md) `🔄 In Progress`
+*None*
 
 ## Next Up
 
@@ -52,6 +52,7 @@
 
 ## Completed Tasks
 
+- [x] [09.4 — CLI Runner & Integration Examples](../sdd/09-yaml-runtime/09.4-cli-runner/SPEC.md) `✅ Done` (commit: `HEAD`)
 - [x] [09.3 — Dynamic Loading of Tools, MCP, & Middlewares](../sdd/09-yaml-runtime/09.3-dynamic-loader/SPEC.md) `✅ Done` (commit: `72b3633`)
 - [x] [09.2 — Runtime Engine Core & I/O Adapters](../sdd/09-yaml-runtime/09.2-runtime-engine/SPEC.md) `✅ Done` (commit: `e3df3b2`)
 - [x] [09.1 — YAML Config Parser & Schema Validation](../sdd/09-yaml-runtime/09.1-yaml-parser/SPEC.md) `✅ Done` (commit: `9e66288`)

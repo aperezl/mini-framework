@@ -1,0 +1,11 @@
+agent:
+  maxIterations: 10
+  provider:
+    type: ollama
+    model: gemma4:e2b
+storage:
+  type: sqlite
+  dbPath: "./history.db"
+io:
+  input: stdio
+  output: stdio
