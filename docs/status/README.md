@@ -11,10 +11,11 @@
 - Milestone 06: Documentación del Proyecto `██████████ 100%`
 - Milestone 07: Integración de Ollama `██████████ 100%`
 - Milestone 08: Refactorización Modular `██████████ 100%`
+- Milestone 09: Runtime YAML `░░░░░░░░░░ 0%`
 
 ## Active Tasks
 
-*None*
+- [ ] [09.1 — YAML Config Parser & Schema Validation](../sdd/09-yaml-runtime/09.1-yaml-parser/SPEC.md) `🔄 In Progress`
 
 ## Next Up
 
@@ -44,6 +45,9 @@
 
 ### Milestone 08: Refactorización Modular
 *None*
+
+### Milestone 09: Runtime YAML
+- [ ] [09.1 — YAML Config Parser & Schema Validation](../sdd/09-yaml-runtime/SPEC.md) `⏳ Pending`
 
 ## Completed Tasks
 
