@@ -15,7 +15,7 @@
 
 ## Active Tasks
 
-*None*
+- [ ] [09.3 — Dynamic Loading of Tools, MCP, & Middlewares](../sdd/09-yaml-runtime/09.3-dynamic-loader/SPEC.md) `🔄 In Progress`
 
 ## Next Up
 
