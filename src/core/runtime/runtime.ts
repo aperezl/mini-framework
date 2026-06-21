@@ -8,6 +8,94 @@ import { YAMLConfig } from './config-schema';
 import { InputSource, OutputSink, StdioInputSource, StdioOutputSink } from './io';
 import { MCPClient } from '../mcp';
 
+// --- Strategy Types ---
+
+type ProviderLoader = (
+  provConfig: YAMLConfig['agent']['provider'],
+  passed?: LLMProvider
+) => Promise<LLMProvider> | LLMProvider;
+
+type StorageLoader = (
+  storageConfig: NonNullable<YAMLConfig['storage']>
+) => SQLiteMemoryAdapter;
+
+type ToolLoader = (
+  toolConf: YAMLConfig['tools'][number],
+  registry: ToolRegistry,
+  mcpClients: MCPClient[]
+) => Promise<void>;
+
+// --- Strategy Map Implementations ---
+
+const providerStrategies: Record<string, ProviderLoader> = {
+  ollama: (provConfig) => {
+    return new OllamaProvider({
+      model: provConfig.model,
+      host: provConfig.host,
+    });
+  },
+  custom: async (provConfig, passed) => {
+    if (passed) return passed;
+    if (!provConfig.modulePath) {
+      throw new Error('Custom provider specified without modulePath');
+    }
+    const absolutePath = path.isAbsolute(provConfig.modulePath)
+      ? provConfig.modulePath
+      : path.resolve(process.cwd(), provConfig.modulePath);
+
+    const mod = await import(absolutePath);
+    const ClassRef = provConfig.className
+      ? mod[provConfig.className]
+      : mod.default;
+
+    if (!ClassRef) {
+      throw new Error(
+        `Could not find class reference in module: ${provConfig.modulePath}`
+      );
+    }
+    return new ClassRef(provConfig.options ?? {});
+  },
+};
+
+const storageStrategies: Record<string, StorageLoader> = {
+  sqlite: (storageConfig) => {
+    const dbPath = storageConfig.dbPath ?? ':memory:';
+    return new SQLiteMemoryAdapter(dbPath);
+  },
+};
+
+const toolStrategies: Record<'modulePath' | 'mcp', ToolLoader> = {
+  modulePath: async (toolConf, registry) => {
+    if (!toolConf.modulePath) return;
+    const absolutePath = path.isAbsolute(toolConf.modulePath)
+      ? toolConf.modulePath
+      : path.resolve(process.cwd(), toolConf.modulePath);
+
+    const mod = await import(absolutePath);
+    const toolInstance = toolConf.name ? mod[toolConf.name] : mod.default;
+    if (!toolInstance || typeof toolInstance.execute !== 'function') {
+      throw new Error(`Invalid tool exported from module: ${toolConf.modulePath}`);
+    }
+    registry.register(toolInstance);
+  },
+  mcp: async (toolConf, registry, mcpClients) => {
+    if (!toolConf.mcp) return;
+    const mcpClient = new MCPClient(
+      toolConf.mcp.command,
+      toolConf.mcp.args ?? []
+    );
+    await mcpClient.connect();
+    mcpClients.push(mcpClient);
+
+    const remoteTools = await mcpClient.listTools();
+    for (const remoteTool of remoteTools) {
+      registry.register(remoteTool);
+    }
+  },
+};
+
+// --- AgentRuntime Class ---
+
 export class AgentRuntime {
   public agent!: Agent;
   public provider!: LLMProvider;
@@ -36,89 +124,38 @@ export class AgentRuntime {
 
   /**
    * Asynchronously initializes the runtime components, loading dynamic providers,
-   * tools, middlewares, and establishing MCP connections.
+   * tools, middlewares, and establishing MCP connections using Strategy Pattern.
    */
   public async initialize(): Promise<void> {
     if (this.isInitialized) return;
 
     const config = this.config;
 
-    // 1. Configure LLM Provider
-    if (config.agent.provider.type === 'ollama') {
-      this.provider = new OllamaProvider({
-        model: config.agent.provider.model,
-        host: config.agent.provider.host,
-      });
-    } else if (config.agent.provider.type === 'custom') {
-      if (this.customProviderPassed) {
-        this.provider = this.customProviderPassed;
-      } else {
-        if (!config.agent.provider.modulePath) {
-          throw new Error('Custom provider specified without modulePath');
-        }
-        const absolutePath = path.isAbsolute(config.agent.provider.modulePath)
-          ? config.agent.provider.modulePath
-          : path.resolve(process.cwd(), config.agent.provider.modulePath);
-
-        const mod = await import(absolutePath);
-        const ClassRef = config.agent.provider.className
-          ? mod[config.agent.provider.className]
-          : mod.default;
-
-        if (!ClassRef) {
-          throw new Error(
-            `Could not find class reference in module: ${config.agent.provider.modulePath}`
-          );
-        }
-        this.provider = new ClassRef(config.agent.provider.options ?? {});
-      }
-    } else {
+    // 1. Configure LLM Provider using Provider Strategies
+    const providerLoader = providerStrategies[config.agent.provider.type];
+    if (!providerLoader) {
       throw new Error(`Unsupported provider type: ${config.agent.provider.type}`);
     }
+    this.provider = await providerLoader(config.agent.provider, this.customProviderPassed);
 
     // 2. Instantiate Agent
     this.agent = new Agent(this.registry, this.provider, {
       maxIterations: config.agent.maxIterations,
     });
 
-    // 3. Configure Storage
+    // 3. Configure Storage using Storage Strategies
     if (config.storage) {
-      if (config.storage.type === 'sqlite') {
-        const dbPath = config.storage.dbPath ?? ':memory:';
-        this.storage = new SQLiteMemoryAdapter(dbPath);
-      } else {
+      const storageLoader = storageStrategies[config.storage.type];
+      if (!storageLoader) {
         throw new Error(`Unsupported storage type: ${config.storage.type}`);
       }
+      this.storage = storageLoader(config.storage);
     }
 
-    // 4. Configure Dynamic Tools & MCP Servers
+    // 4. Configure Dynamic Tools & MCP Servers using Tool Strategies
     for (const toolConf of config.tools) {
-      if (toolConf.modulePath) {
-        const absolutePath = path.isAbsolute(toolConf.modulePath)
-          ? toolConf.modulePath
-          : path.resolve(process.cwd(), toolConf.modulePath);
-
-        const mod = await import(absolutePath);
-        // Look for default export or name
-        const toolInstance = toolConf.name ? mod[toolConf.name] : mod.default;
-        if (!toolInstance || typeof toolInstance.execute !== 'function') {
-          throw new Error(`Invalid tool exported from module: ${toolConf.modulePath}`);
-        }
-        this.registry.register(toolInstance);
-      } else if (toolConf.mcp) {
-        const mcpClient = new MCPClient(
-          toolConf.mcp.command,
-          toolConf.mcp.args ?? []
-        );
-        await mcpClient.connect();
-        this.mcpClients.push(mcpClient);
-
-        // Fetch remote tools and register them
-        const remoteTools = await mcpClient.listTools();
-        for (const remoteTool of remoteTools) {
-          this.registry.register(remoteTool);
-        }
-      }
+      const toolType = toolConf.mcp ? 'mcp' : 'modulePath';
+      await toolStrategies[toolType](toolConf, this.registry, this.mcpClients);
     }
 
     // 5. Configure Dynamic Middlewares
@@ -133,7 +170,6 @@ export class AgentRuntime {
         throw new Error(`Could not find middleware in module: ${mwConf.modulePath}`);
       }
 
-      // Check if it's a class or direct object
       const mwInstance =
         typeof ClassRef === 'function' && ClassRef.prototype
           ? new ClassRef(mwConf.options ?? {})
