@@ -15,7 +15,7 @@
 
 ## Active Tasks
 
-*None*
+- [ ] [09.4 — CLI Runner & Integration Examples](../sdd/09-yaml-runtime/09.4-cli-runner/SPEC.md) `🔄 In Progress`
 
 ## Next Up
 
