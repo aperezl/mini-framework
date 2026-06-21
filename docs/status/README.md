@@ -10,6 +10,7 @@
 - Milestone 05: Ejemplos Prácticos `██████████ 100%`
 - Milestone 06: Documentación del Proyecto `██████████ 100%`
 - Milestone 07: Integración de Ollama `██████████ 100%`
+- Milestone 08: Refactorización Modular `██████████ 100%`
 
 ## Active Tasks
 
@@ -41,6 +42,9 @@
 ### Milestone 07: Integración de Ollama
 *None*
 
+### Milestone 08: Refactorización Modular
+*None*
+
 ## Completed Tasks
 
 - [x] [00.1 — Inicialización de package.json](../sdd/completed/00-get-started/00.1-init-package/SPEC.md) `✅ Done` (commit: `83b87b4`)
@@ -61,3 +65,4 @@
 - [x] [05.1 — Ejemplos Integrados](../sdd/completed/05-ejemplos/05.1-ejemplos-integrados/SPEC.md) `✅ Done` (commit: `0a77072`)
 - [x] [06.1 — Documentación Paso a Paso](../sdd/completed/06-documentacion/06.1-doc-paso-a-paso/SPEC.md) `✅ Done` (commit: `ac4e01b`)
 - [x] [07.1 — Arquitectura Limpia y Proveedor Ollama](../sdd/completed/07-ollama/07.1-arquitectura-limpia/SPEC.md) `✅ Done` (commit: `364802b`)
+- [x] [08.1 — Plan de Refactorización Modular](../sdd/08-modular-refactoring/SPEC.md) `✅ Done`

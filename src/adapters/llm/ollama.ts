@@ -28,6 +28,9 @@ export class OllamaProvider implements LLMProvider {
         if (msg.content) {
           formatted.content = msg.content;
         }
+        if (msg.thinking) {
+          formatted.thinking = msg.thinking;
+        }
         if (msg.tool_calls && msg.tool_calls.length > 0) {
           formatted.tool_calls = msg.tool_calls.map((tc) => {
             let parsedArgs = tc.function.arguments;
@@ -131,6 +134,7 @@ export class OllamaProvider implements LLMProvider {
       message: {
         role: 'assistant',
         content: ollamaMsg.content ?? null,
+        thinking: (ollamaMsg as any).thinking ?? null,
         ...(toolCalls && toolCalls.length > 0 ? { tool_calls: toolCalls } : {}),
       },
       finish_reason: toolCalls && toolCalls.length > 0 ? 'tool_calls' : finishReason,
@@ -192,6 +196,10 @@ export class OllamaProvider implements LLMProvider {
           delta.content = msgChunk.content;
         }
 
+        if (msgChunk?.thinking) {
+          delta.thinking = msgChunk.thinking;
+        }
+
         if (msgChunk?.tool_calls && msgChunk.tool_calls.length > 0) {
           delta.tool_calls_delta = msgChunk.tool_calls.map((tc: any, index: number) => {
             const args = tc.function.arguments;
@@ -225,6 +233,10 @@ export class OllamaProvider implements LLMProvider {
 
         if (msgChunk?.content) {
           delta.content = msgChunk.content;
+        }
+
+        if (msgChunk?.thinking) {
+          delta.thinking = msgChunk.thinking;
         }
 
         if (msgChunk?.tool_calls && msgChunk.tool_calls.length > 0) {
