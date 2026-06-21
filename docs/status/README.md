@@ -56,7 +56,7 @@
 
 ## Completed Tasks
 
-- [x] [10.1 — Runtime Component Loaders Refactoring](../sdd/10-refactor/10.1-runtime-loaders/SPEC.md) `✅ Done` (commit: `HEAD`)
+- [x] [10.1 — Runtime Component Loaders Refactoring](../sdd/10-refactor/10.1-runtime-loaders/SPEC.md) `✅ Done` (commit: `1a980e1`)
 - [x] [09.4 — CLI Runner & Integration Examples](../sdd/09-yaml-runtime/09.4-cli-runner/SPEC.md) `✅ Done` (commit: `76c5247`)
 - [x] [09.3 — Dynamic Loading of Tools, MCP, & Middlewares](../sdd/09-yaml-runtime/09.3-dynamic-loader/SPEC.md) `✅ Done` (commit: `72b3633`)
 - [x] [09.2 — Runtime Engine Core & I/O Adapters](../sdd/09-yaml-runtime/09.2-runtime-engine/SPEC.md) `✅ Done` (commit: `e3df3b2`)
