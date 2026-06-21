@@ -27,6 +27,7 @@ export type {
 
 export type AgentStreamChunk =
   | { type: 'token'; content: string }
+  | { type: 'thinking'; content: string }
   | { type: 'tool_call_start'; toolCallId: string; name: string }
   | { type: 'tool_call_end'; toolCallId: string; name: string; result: any }
   | { type: 'error'; message: string };
@@ -60,9 +61,30 @@ export class Agent {
     while (iterations < this.maxIterations) {
       iterations++;
       
+      // Run beforeLLMCall middlewares
+      let currentMessages = [...history];
+      for (const mw of this.middlewares) {
+        if (mw.beforeLLMCall) {
+          const res = await mw.beforeLLMCall(currentMessages, context);
+          if (res !== undefined) {
+            currentMessages = res;
+          }
+        }
+      }
+
       const tools = this.registry.getDefinitions();
-      const response = await this.provider.chat(history, tools.length > 0 ? { tools } : undefined);
+      let response = await this.provider.chat(currentMessages, tools.length > 0 ? { tools } : undefined);
       
+      // Run afterLLMCall middlewares
+      for (const mw of this.middlewares) {
+        if (mw.afterLLMCall) {
+          const res = await mw.afterLLMCall(response, context);
+          if (res !== undefined) {
+            response = res;
+          }
+        }
+      }
+
       // Add response message to history
       history.push(response.message);
 
@@ -149,13 +171,25 @@ export class Agent {
           while (iterations < self.maxIterations) {
             iterations++;
 
+            // Run beforeLLMCall middlewares
+            let currentMessages = [...history];
+            for (const mw of self.middlewares) {
+              if (mw.beforeLLMCall) {
+                const res = await mw.beforeLLMCall(currentMessages, context);
+                if (res !== undefined) {
+                  currentMessages = res;
+                }
+              }
+            }
+
             const tools = self.registry.getDefinitions();
             const stream = await self.provider.chatStream!(
-              history,
+              currentMessages,
               tools.length > 0 ? { tools } : undefined
             );
 
             let accumulatedContent = '';
+            let accumulatedThinking = '';
             const accumulatedToolCalls: Array<{
               id?: string;
               type?: 'function';
@@ -170,7 +204,24 @@ export class Agent {
             for await (const chunk of stream) {
               if (chunk.content) {
                 accumulatedContent += chunk.content;
+                // Run onStreamToken middlewares
+                for (const mw of self.middlewares) {
+                  if (mw.onStreamToken) {
+                    await mw.onStreamToken(chunk.content, 'token', context);
+                  }
+                }
                 controller.enqueue({ type: 'token', content: chunk.content });
+              }
+
+              if (chunk.thinking) {
+                accumulatedThinking += chunk.thinking;
+                // Run onStreamToken middlewares
+                for (const mw of self.middlewares) {
+                  if (mw.onStreamToken) {
+                    await mw.onStreamToken(chunk.thinking, 'thinking', context);
+                  }
+                }
+                controller.enqueue({ type: 'thinking', content: chunk.thinking });
               }
 
               if (chunk.tool_calls_delta) {
@@ -204,6 +255,9 @@ export class Agent {
             if (accumulatedContent) {
               assistantMsg.content = accumulatedContent;
             }
+            if (accumulatedThinking) {
+              assistantMsg.thinking = accumulatedThinking;
+            }
             if (accumulatedToolCalls.length > 0) {
               assistantMsg.tool_calls = accumulatedToolCalls.map((tc) => {
                 return {
@@ -217,19 +271,35 @@ export class Agent {
               });
             }
 
-            history.push(assistantMsg);
+            let responseObj: LLMResponse = {
+              message: assistantMsg,
+              finish_reason: assistantMsg.tool_calls && assistantMsg.tool_calls.length > 0 ? 'tool_calls' : (finalFinishReason || 'stop'),
+            };
+
+            // Run afterLLMCall middlewares
+            for (const mw of self.middlewares) {
+              if (mw.afterLLMCall) {
+                const res = await mw.afterLLMCall(responseObj, context);
+                if (res !== undefined) {
+                  responseObj = res;
+                }
+              }
+            }
+
+            history.push(responseObj.message);
 
             // Determine if we should exit
             if (
-              !assistantMsg.tool_calls ||
-              assistantMsg.tool_calls.length === 0
+              responseObj.message.role !== 'assistant' ||
+              !responseObj.message.tool_calls ||
+              responseObj.message.tool_calls.length === 0
             ) {
               controller.close();
               return;
             }
 
             // Process tool calls
-            for (const toolCall of assistantMsg.tool_calls) {
+            for (const toolCall of responseObj.message.tool_calls) {
               const toolName = toolCall.function.name;
               const tool = self.registry.get(toolName);
 
