@@ -126,4 +126,96 @@ describe('Middleware System', () => {
     expect(result[2].role).toBe('tool');
     expect(result[2].content).toBe('original - modified!');
   });
+
+  it('runs beforeLLMCall middleware to modify input messages', async () => {
+    const registry = new ToolRegistry();
+    const chatMock = vi.fn().mockResolvedValue({
+      message: { role: 'assistant', content: 'Reply' },
+      finish_reason: 'stop',
+    });
+    const provider: LLMProvider = { chat: chatMock };
+    const agent = new Agent(registry, provider);
+
+    const promptMiddleware: Middleware = {
+      beforeLLMCall: (messages) => {
+        return [...messages, { role: 'user', content: 'injected prompt' }];
+      },
+    };
+    agent.use(promptMiddleware);
+
+    await agent.run([{ role: 'user', content: 'original user prompt' }]);
+    expect(chatMock).toHaveBeenCalledWith(
+      expect.arrayContaining([
+        { role: 'user', content: 'original user prompt' },
+        { role: 'user', content: 'injected prompt' },
+      ]),
+      undefined
+    );
+  });
+
+  it('runs afterLLMCall middleware to modify the LLM response', async () => {
+    const registry = new ToolRegistry();
+    const chatMock = vi.fn().mockResolvedValue({
+      message: { role: 'assistant', content: 'Original Answer' },
+      finish_reason: 'stop',
+    });
+    const provider: LLMProvider = { chat: chatMock };
+    const agent = new Agent(registry, provider);
+
+    const modifyAnswerMiddleware: Middleware = {
+      afterLLMCall: (response) => {
+        return {
+          ...response,
+          message: {
+            ...response.message,
+            content: 'Modified Answer',
+          },
+        };
+      },
+    };
+    agent.use(modifyAnswerMiddleware);
+
+    const history = await agent.run([{ role: 'user', content: 'test' }]);
+    expect(history[1].role).toBe('assistant');
+    expect(history[1].content).toBe('Modified Answer');
+  });
+
+  it('runs onStreamToken during streaming execution', async () => {
+    const registry = new ToolRegistry();
+    
+    // Create an async generator for mock streaming
+    async function* mockStream() {
+      yield { content: 'hello' };
+      yield { thinking: 'thinking-process' };
+      yield { content: ' world' };
+    }
+
+    const provider: LLMProvider = {
+      chat: vi.fn(),
+      chatStream: vi.fn().mockResolvedValue(mockStream()),
+    };
+    const agent = new Agent(registry, provider);
+
+    const tokens: { token: string; type: string }[] = [];
+    const streamMiddleware: Middleware = {
+      onStreamToken: (token, type) => {
+        tokens.push({ token, type });
+      },
+    };
+    agent.use(streamMiddleware);
+
+    const stream = agent.runStream([{ role: 'user', content: 'stream test' }]);
+    const reader = stream.getReader();
+    while (true) {
+      const { done } = await reader.read();
+      if (done) break;
+    }
+
+    expect(tokens).toEqual([
+      { token: 'hello', type: 'token' },
+      { token: 'thinking-process', type: 'thinking' },
+      { token: ' world', type: 'token' },
+    ]);
+  });
 });
+
