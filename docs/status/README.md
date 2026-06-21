@@ -47,7 +47,8 @@
 *None*
 
 ### Milestone 09: Runtime YAML
-- [ ] [09.1 — YAML Config Parser & Schema Validation](../sdd/09-yaml-runtime/SPEC.md) `⏳ Pending`
+- [ ] [09.3 — Dynamic Loading of Tools, MCP, & Middlewares](../sdd/09-yaml-runtime/09.3-dynamic-loader/SPEC.md) `⏳ Pending`
+- [ ] [09.4 — CLI Runner & Integration Examples](../sdd/09-yaml-runtime/09.4-cli-runner/SPEC.md) `⏳ Pending`
 
 ## Completed Tasks
 
