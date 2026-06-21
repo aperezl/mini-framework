@@ -11,7 +11,7 @@
 - Milestone 06: Documentación del Proyecto `██████████ 100%`
 - Milestone 07: Integración de Ollama `██████████ 100%`
 - Milestone 08: Refactorización Modular `██████████ 100%`
-- Milestone 09: Runtime YAML `██▌░░░░░░░ 25%`
+- Milestone 09: Runtime YAML `█████░░░░░ 50%`
 
 ## Active Tasks
 
@@ -47,10 +47,12 @@
 *None*
 
 ### Milestone 09: Runtime YAML
-- [ ] [09.1 — YAML Config Parser & Schema Validation](../sdd/09-yaml-runtime/SPEC.md) `⏳ Pending`
+- [ ] [09.3 — Dynamic Loading of Tools, MCP, & Middlewares](../sdd/09-yaml-runtime/09.3-dynamic-loader/SPEC.md) `⏳ Pending`
+- [ ] [09.4 — CLI Runner & Integration Examples](../sdd/09-yaml-runtime/09.4-cli-runner/SPEC.md) `⏳ Pending`
 
 ## Completed Tasks
 
+- [x] [09.2 — Runtime Engine Core & I/O Adapters](../sdd/09-yaml-runtime/09.2-runtime-engine/SPEC.md) `✅ Done` (commit: `e3df3b2`)
 - [x] [09.1 — YAML Config Parser & Schema Validation](../sdd/09-yaml-runtime/09.1-yaml-parser/SPEC.md) `✅ Done` (commit: `9e66288`)
 - [x] [00.1 — Inicialización de package.json](../sdd/completed/00-get-started/00.1-init-package/SPEC.md) `✅ Done` (commit: `83b87b4`)
 - [x] [00.2 — Configuración de TypeScript](../sdd/completed/00-get-started/00.2-setup-typescript/SPEC.md) `✅ Done` (commit: `b41a4c1`)
