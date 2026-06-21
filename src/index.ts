@@ -29,3 +29,6 @@ export { MCPClient, jsonSchemaToZod } from './core/mcp';
 
 export { OllamaProvider } from './adapters/llm/ollama';
 export type { OllamaProviderOptions } from './adapters/llm/ollama';
+
+export { YAMLConfigSchema, parseYAMLConfig } from './core/runtime/config-schema';
+export type { YAMLConfig } from './core/runtime/config-schema';
