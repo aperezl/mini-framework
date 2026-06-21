@@ -12,10 +12,11 @@
 - Milestone 07: Integración de Ollama `██████████ 100%`
 - Milestone 08: Refactorización Modular `██████████ 100%`
 - Milestone 09: Runtime YAML `██████████ 100%`
+- Milestone 10: Refactor `░░░░░░░░░░ 0%`
 
 ## Active Tasks
 
-*None*
+- [ ] [10.1 — Runtime Component Loaders Refactoring](../sdd/10-refactor/10.1-runtime-loaders/SPEC.md) `🔄 In Progress`
 
 ## Next Up
 
@@ -47,8 +48,11 @@
 *None*
 
 ### Milestone 09: Runtime YAML
-- [ ] [09.3 — Dynamic Loading of Tools, MCP, & Middlewares](../sdd/09-yaml-runtime/09.3-dynamic-loader/SPEC.md) `⏳ Pending`
-- [ ] [09.4 — CLI Runner & Integration Examples](../sdd/09-yaml-runtime/09.4-cli-runner/SPEC.md) `⏳ Pending`
+*None*
+
+### Milestone 10: Refactor
+- [ ] [10.1 — Runtime Component Loaders Refactoring](../sdd/10-refactor/10.1-runtime-loaders/SPEC.md) `⏳ Pending`
+- [ ] [10.2 — Adapter Role Formatter Refactoring](../sdd/10-refactor/10.2-role-formatter/SPEC.md) `⏳ Pending`
 
 ## Completed Tasks
 
